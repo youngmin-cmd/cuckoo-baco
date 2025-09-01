@@ -1,0 +1,605 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.logo i {
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.logo h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Main Content */
+.main-content {
+    display: grid;
+    gap: 30px;
+}
+
+/* Scan Section */
+.scan-section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.camera-container {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #f8f9fa;
+}
+
+#video {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.scan-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.scan-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 100px;
+    border: 2px solid #667eea;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+.scan-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #667eea, transparent);
+    animation: scan 2s ease-in-out infinite;
+}
+
+@keyframes scan {
+    0%, 100% { transform: translate(-50%, -50px); }
+    50% { transform: translate(-50%, 50px); }
+}
+
+.camera-controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Result Section */
+.result-section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.result-card {
+    display: grid;
+    gap: 25px;
+}
+
+.barcode-info h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.barcode-number {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+}
+
+.barcode-number span {
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #495057;
+    flex: 1;
+}
+
+.btn-copy {
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-copy:hover {
+    background: #5a6fd8;
+    transform: scale(1.05);
+}
+
+.usage-info h4 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.usage-details {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    line-height: 1.6;
+}
+
+/* Manual Input Section */
+.manual-input-section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.input-card h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#manualBarcode {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#manualBarcode:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Recent Scans */
+.recent-scans {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.recent-scans h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.recent-list {
+    display: grid;
+    gap: 15px;
+}
+
+.recent-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.recent-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.recent-barcode {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: #495057;
+}
+
+.recent-time {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    color: white;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        max-width: 100%;
+    }
+    
+    .header {
+        margin-bottom: 25px;
+    }
+    
+    .logo {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .logo i {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    /* 섹션들 간격 줄이기 */
+    .main-content {
+        gap: 20px;
+    }
+    
+    .scan-section,
+    .result-section,
+    .manual-input-section,
+    .recent-scans {
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+    
+    /* 카메라 영역 모바일 최적화 */
+    .camera-container {
+        max-width: 100%;
+    }
+    
+    #video {
+        height: 250px;
+        border-radius: 10px;
+    }
+    
+    .scan-frame {
+        width: 180px;
+        height: 80px;
+    }
+    
+    .scan-line {
+        width: 160px;
+    }
+    
+    /* 버튼 모바일 최적화 */
+    .camera-controls {
+        margin-top: 15px;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    
+    /* 입력 그룹 모바일 최적화 */
+    .input-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    #manualBarcode {
+        padding: 18px 15px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+    }
+    
+    /* 바코드 번호 표시 모바일 최적화 */
+    .barcode-number {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        padding: 20px 15px;
+    }
+    
+    .barcode-number span {
+        font-size: 1.1rem;
+        text-align: center;
+        padding: 10px;
+        background: white;
+        border-radius: 8px;
+        word-break: break-all;
+    }
+    
+    .btn-copy {
+        align-self: stretch;
+        padding: 12px;
+        font-size: 1rem;
+    }
+    
+    /* 최근 스캔 모바일 최적화 */
+    .recent-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 18px 15px;
+    }
+    
+    .recent-barcode {
+        font-size: 1.1rem;
+        word-break: break-all;
+    }
+    
+    .recent-time {
+        font-size: 0.95rem;
+        align-self: flex-end;
+    }
+    
+    /* 제품 이미지 모바일 최적화 */
+    .product-images {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .product-images img {
+        max-width: 100% !important;
+        width: 280px;
+        height: auto;
+        margin: 0 !important;
+    }
+    
+    /* 사용 안내 텍스트 크기 */
+    .usage-details {
+        padding: 18px 15px;
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    
+    .usage-details h4 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    
+    .usage-details p {
+        margin-bottom: 12px;
+    }
+    
+    .usage-details ul li {
+        margin-bottom: 8px;
+    }
+    
+    /* 제목들 크기 조정 */
+    h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    h4 {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* 더 작은 모바일 화면 (480px 이하) */
+@media (max-width: 480px) {
+    .container {
+        padding: 8px;
+    }
+    
+    .logo h1 {
+        font-size: 1.6rem;
+    }
+    
+    .logo i {
+        font-size: 1.6rem;
+    }
+    
+    .subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .scan-section,
+    .result-section,
+    .manual-input-section,
+    .recent-scans {
+        padding: 15px 12px;
+    }
+    
+    #video {
+        height: 220px;
+    }
+    
+    .scan-frame {
+        width: 160px;
+        height: 70px;
+    }
+    
+    .scan-line {
+        width: 140px;
+    }
+    
+    .btn {
+        padding: 16px 18px;
+        font-size: 1rem;
+    }
+    
+    .product-images img {
+        width: 100%;
+        max-width: 250px !important;
+    }
+}
+
+/* 터치 디바이스 최적화 */
+@media (hover: none) and (pointer: coarse) {
+    .btn {
+        min-height: 48px;
+        padding: 15px 20px;
+    }
+    
+    .btn-copy {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .recent-item {
+        min-height: 60px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(102, 126, 234, 0.1);
+    }
+    
+    .recent-item:active {
+        background: #667eea;
+        color: white;
+        transform: scale(0.98);
+    }
+    
+    /* 터치 스크롤 개선 */
+    .recent-list {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success/Error Messages */
+.message {
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    font-weight: 500;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Hidden elements */
+.hidden {
+    display: none !important;
+} 
