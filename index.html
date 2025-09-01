@@ -1,98 +1,89 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#667eea">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="easy 필터">
-    <title>easy 필터 - 바코드 스캔 & 사용 안내</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <div class="container">
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-barcode"></i>
-                <h1>쿠쿠 easy 필터</h1>
-            </div>
-            <p class="subtitle">바코드를 스캔하고 필터 사용 모델을 알아보세요</p>
-        </header>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
 
-        <main class="main-content">
-            <div class="scan-section">
-                <div class="camera-container">
-                    <video id="video" autoplay muted></video>
-                    <canvas id="canvas" style="display: none;"></canvas>
-                    <div class="scan-overlay">
-                        <div class="scan-frame"></div>
-                        <div class="scan-line"></div>
-                    </div>
-                    <div class="camera-controls">
-                        <button id="startScan" class="btn btn-primary">
-                            <i class="fas fa-camera"></i>
-                            스캔 시작
-                        </button>
-                        <button id="stopScan" class="btn btn-secondary" style="display: none;">
-                            <i class="fas fa-stop"></i>
-                            스캔 중지
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/12.2.1/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/12.2.1/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/12.2.1/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/12.2.1/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/12.2.1/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/12.2.1/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/12.2.1/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/12.2.1/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/12.2.1/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/12.2.1/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-            <div class="result-section" style="display: none;">
-                <div class="result-card">
-                    <div class="barcode-info">
-                        <h3>스캔 결과</h3>
-                        <div class="barcode-number">
-                            <span id="barcodeValue"></span>
-                            <button id="copyBarcode" class="btn-copy">
-                                <i class="fas fa-copy"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="usage-info">
-                        <h4>사용 안내</h4>
-                        <div id="usageDetails" class="usage-details">
-                            <!-- 사용 안내 내용이 여기에 표시됩니다 -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="manual-input-section">
-                <div class="input-card">
-                    <h3>바코드 번호 직접 입력</h3>
-                    <div class="input-group">
-                        <input type="text" id="manualBarcode" placeholder="바코드 번호를 입력하세요" maxlength="20">
-                        <button id="searchBarcode" class="btn btn-primary">
-                            <i class="fas fa-search"></i>
-                            검색
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recent-scans">
-                <h3>최근 스캔 기록</h3>
-                <div id="recentScansList" class="recent-list">
-                    <!-- 최근 스캔 기록이 여기에 표시됩니다 -->
-                </div>
-            </div>
-        </main>
-
-        <footer class="footer">
-            <p>&copy; 2025 easy 필터. 바코드 스캔 & 필터 모델안내 서비스 by YM
-        
-            </p>
-        </footer>
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
     </div>
+    <p id="load">Firebase SDK Loading&hellip;</p>
 
-    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html> 
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
+</html>
